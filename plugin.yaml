@@ -1,0 +1,37 @@
+name: prediction-market-scout
+version: 1.0.0
+manifest_version: 2
+description: "Polymarket research for Hermes: live odds, 24h movers, attention signals, a price-alert watchlist, a /pm command and one-click scheduled briefings. Read-only, no API key."
+author: HATWHY4041
+license: MIT
+homepage: https://github.com/HATWHY4041/prediction-market-scout
+tags: [prediction-markets, polymarket, research, alerts, briefing]
+requires_hermes: ">=0.21.5"
+provides_tools:
+  - polymarket_scan
+  - polymarket_search
+  - polymarket_market
+  - polymarket_signals
+  - polymarket_watch
+  - polymarket_brief
+config_schema:
+  min_volume_24h:
+    type: float
+    default: 5000
+    label: "Ignore markets quieter than (USD, 24h)"
+    description: "Markets with less 24h trading volume than this are left out of movers and signals."
+  move_pts:
+    type: float
+    default: 8
+    label: "Big-move threshold (points)"
+    description: "A 24h price change of at least this many percentage points counts as a big move."
+  closing_hours:
+    type: float
+    default: 72
+    label: "Closing-soon window (hours)"
+    description: "How far ahead 'closing soon' looks."
+  default_limit:
+    type: int
+    default: 5
+    label: "Markets per list"
+    description: "How many markets each list shows by default (1-15)."
